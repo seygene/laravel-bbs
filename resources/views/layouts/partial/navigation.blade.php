@@ -22,24 +22,22 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ route('sessions.create') }}">Login</a></li>
+                    <li><a href="{{ route('users.create') }}">Register</a></li>
                 @else
-                    <li class="dropdown"></li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
+                    <li class="dropdown open">
+                        <a href=# class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-                            <form action="{{ url('/logout') }}" id="logout-form" method="POST" style="display:none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
+                        <ul role="menu" class="dropdown-menu" >
+                            <li>
+                                <a href="{{ route('sessions.destroy') }}">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 @endif
             </ul>
         </div>
