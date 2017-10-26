@@ -13,6 +13,7 @@
         "axios": "^0.16.2",
         "bootstrap-sass": "^3.3.7",
         "cross-env": "^5.0.1",
+        "font-awesome": "^4.7.0",
         "jquery": "^3.1.1",
         "laravel-elixir": "^6.0.0-16",
         "laravel-elixir-vue": "^0.1.8",
@@ -22,7 +23,6 @@
         "vue": "^2.1.10"
     },
     "dependencies": {
-        "font-awesome": "^4.7.0",
         "gulp": "^3.9.1"
     }
 }

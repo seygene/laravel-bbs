@@ -28,4 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token', 'confirm_code', 'last_login',
     ];
 
+    public function articles() {
+        return $this->hasMany(Article::class);
+    }
+
 }
