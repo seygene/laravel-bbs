@@ -27,7 +27,6 @@ class AddLastLoginColumnOnUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('last_login');
-            //
         });
     }
 }

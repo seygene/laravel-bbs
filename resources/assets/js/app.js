@@ -17,6 +17,24 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 
+/*
+const app = new Vue({
+  el: 'body',
+
+  ready() {
+    hljs.initHighlightingOnLoad();
+    this.removeFlashMessages();
+  },
+
+  methods: {
+    removeFlashMessages() {
+      if ($('.alert')) {
+        $('.alert').delay(5000).fadeOut();
+      }
+    }
+  }
+});
 const app = new Vue({
     el: '#app'
 });
+*/

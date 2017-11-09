@@ -16,9 +16,11 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug = null)
     {
-        $articles = \App\Article::latest()->paginate(5);
+        $query = $slug ? \App\Tag::whereSlug($slug)->firstOrFail()->articles() : new \App\Article;
+
+        $articles = $query->latest()->paginate(5);
 
         return view('articles.index', compact('articles'));
     }
@@ -58,6 +60,7 @@ class ArticlesController extends Controller
             flash('글이 저장되지 않았습니다.')->error();
             return back()->withInput();
         }
+        $article->tags()->sync($request->input('tags'));
 
         flash('글이 저장되었습니다.');
         return redirect(route('articles.index'));
@@ -98,6 +101,8 @@ class ArticlesController extends Controller
     public function update(\App\Http\Requests\ArticlesRequest $request, \App\Article $article)
     {
         $article->update($request->all());
+        $article->tags()->sync($request->input('tags'));
+
         flash('글이 수정되었습니다.');
         return redirect(route('articles.show',$article->id));
     }

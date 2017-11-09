@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @php $viewName = 'articles.show'; @endphp
     <div class="page-header">
         <h4>게시판 글 / <small>{{ $article->title }}</small></h4>
     </div>
@@ -8,6 +9,7 @@
     <article data-id="{{ $article->id }}">
         @include('articles.partial.article', compact('article'))
         <p>{{ $article->content }}</p>
+        @include('tags.partial.list', ['tags' => $article->tags])
     </article>
 
     <div class="text-right action__article">

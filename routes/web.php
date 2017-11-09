@@ -19,6 +19,11 @@ DB::listen(function ($query) {
 });
 */
 
+Route::get('tags/{slug}/articles', [
+    'as'   => 'tags.articles.index',
+    'uses' => 'ArticlesController@index'
+]);
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('/home', 'HomeController@index');
